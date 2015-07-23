@@ -9,10 +9,12 @@ function keysPressed(e) {
 	keysDown[e.keyCode] = true;
 	if (keysDown[keyMaps['Right']]) {
 		console.log('Right');
+		player.move(1,0);
 	}
 
 	if (keysDown[keyMaps['Left']]) {
 		console.log('Left');
+		player.move(-1,0);
 	}
 }
 
