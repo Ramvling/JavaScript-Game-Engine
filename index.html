@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="engine.css">
+	</head>
+	<body>
+	<canvas id="gameScreen" class="gameScreen"></canvas>
+	<script type="text/javascript" src="controls.js"></script>
+	<script type="text/javascript" src="player.js"></script>
+	<script>
+		//document.getElementById("demo").innerHTML = "Hello World!";
+		var context = document.getElementById('gameScreen').getContext("2d");
+		var canvas = document.getElementById('gameScreen');
+		function animate() {
+			console.log("bopop");
+			context.clearRect(0, 0, 500,500);
+			context.fillStyle = 'blue';
+			context.rect(0,0,window.innerWidth,window.innerHeight);
+    		context.fill();
+			window.setTimeout(animate, 100);
+			return;
+		}
+		//animate();
+		</script>
+	</body>
+</html> 
