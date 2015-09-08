@@ -7,7 +7,10 @@
 	<canvas id="gameScreen" class="gameScreen"></canvas>
 	<script type="text/javascript" src="controls.js"></script>
 	<script type="text/javascript" src="player.js"></script>
+	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript" src="physics.js"></script>
 	<script>
+		//setup game
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		var player = Player();
@@ -15,11 +18,15 @@
 		var context = document.getElementById('gameScreen').getContext("2d");
 		var canvas = document.getElementById('gameScreen');
 		function animate() {
-			console.log("bopop");
+			context.canvas.width = w;
+			context.canvas.height = h;
+			handleInputs();
+			//clear previous frame. Maybe do more efficently, idk. Should probably be handled by world/screen module
 			context.clearRect(0, 0, w,h);
 			context.fillStyle = 'blue';
 			context.rect(0,0,w,h);
     		context.fill();
+    		//make a seperate drawing module maybe
     		player.draw(context);
 			window.setTimeout(animate, 75);
 			return;

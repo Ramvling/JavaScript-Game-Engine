@@ -2,6 +2,8 @@ function Player() {
 	var player = {};
 	player.x = 0;
 	player.y = 35;
+	//player.physics = new Vector(0,0);
+	//change this soon
 	player.speed = 1.5;
 	player.move = function(dx,dy) {
 		player.x += (dx * player.speed);
