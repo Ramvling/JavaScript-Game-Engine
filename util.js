@@ -5,39 +5,51 @@ function Vector(x,y) {
 	return vec;
 }
 
-function SpriteOptions(src, srcHeight, srcWidth,framecount, tier) {
+function SpriteOptions(src, srcWidth, srcHeight,frameAmount, context) {
     var options = {};
+    options.src = src;
     options.srcHeight = srcHeight;
     options.srcWidth = srcWidth;
-    options.frameWidth
+    options.frameWidth = srcWidth/ frameAmount;
+    options.context = context;
+    options.frameAmount = frameAmount;
+    return options;
 }
-function Sprite(src, height, width, context) {
+function Sprite(src, height, width, context, options) {
     var sprite = {};
     sprite.image = new Image();
     sprite.image.src = src;
     sprite.frame = 0;
     sprite.frameCount = 0;
     sprite.frameLength = 1;
+    sprite.options = options;
     sprite.render = function() {
+        options = sprite.options;
         sprite.frameCount += 1;
         if (sprite.frameCount > sprite.frameLength) {
             sprite.frameCount = 0;
             sprite.frame += 1;
-            sprite.frame = sprite.frame % 10;
+            sprite.frame = sprite.frame % options.frameAmount;
         }
         context.drawImage(
             sprite.image,
-            (sprite.frame * 1000) / 10,
+            (sprite.frame * options.srcWidth) / 10,
             //could easily be adapted for multitiered sprite sheets later
             0,
-            1000 / 10,
-            height,
+            options.srcWidth / options.frameAmount,
+            options.srcHeight,
             0,
             0,
-            1000 / 10,
-            height
+            options.srcWidth / options.frameAmount,
+            options.srcHeight
         )
     }
+
+    sprite.reload = function() {
+        sprite.image = new Image();
+        sprite.image.src = sprite.options.src;
+    }
+
     return sprite;
     
 }

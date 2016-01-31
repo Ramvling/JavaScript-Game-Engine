@@ -16,7 +16,8 @@
 		var player = Player();
 		var context = document.getElementById('gameScreen').getContext("2d");
 		var canvas = document.getElementById('gameScreen');
-        var sprite = Sprite('images/sprite.png', 1000, 100, context);
+        var options = SpriteOptions('images/sprite.png', 1000, 100, 10, context);
+        var sprite = Sprite('images/sprite.png', 1000, 100, context, options);
 		function animate() {
 			context.canvas.width = w;
 			context.canvas.height = h;
@@ -33,6 +34,10 @@
 			return;
 		}
 		animate();
+        window.onresize = function(event) {
+            sprite.reload();
+            console.log("rawr");
+        }
 		</script>
 	</body>
 </html> 
