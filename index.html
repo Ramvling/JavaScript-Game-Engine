@@ -11,9 +11,10 @@
 	<script type="text/javascript" src="physics.js"></script>
 	<script>
 		//setup game
-		var w = window.innerWidth;
-		var h = window.innerHeight;
+		var w = window.innerWidth - 20;
+		var h = window.innerHeight - 20;
 		var player = Player();
+        var entity = Entity(100,100);
 		var context = document.getElementById('gameScreen').getContext("2d");
 		var canvas = document.getElementById('gameScreen');
         var options = SpriteOptions('images/sprite.png', 1000, 100, 10, context);
@@ -29,14 +30,20 @@
     		context.fill();
     		//make a seperate drawing module maybe
     		player.draw(context);
+            entity.draw(context);
+            entity.collide(player);
             sprite.render();
-			window.setTimeout(animate, 50);
+            window.requestAnimationFrame(animate);
 			return;
 		}
-		animate();
+        window.requestAnimationFrame(animate);
+
+
         window.onresize = function(event) {
-            sprite.reload();
             console.log("rawr");
+            document.getElementById('gameScreen').style.width = String(w);
+            document.getElementById('gameScreen').style.height = String(h);
+            sprite.reload();
         }
 		</script>
 	</body>

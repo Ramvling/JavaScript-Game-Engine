@@ -8,22 +8,18 @@ mapKeyCodes();
 function handleInputs() {
 	//passes commands to the other modules. Called every time in the game loop
 	if (keysDown[keyMaps['Right']]) {
-		console.log('Right');
 		player.move(1,0);
 	}
 
 	if (keysDown[keyMaps['Left']]) {
-		console.log('Left');
 		player.move(-1,0);
 	}
 
 	if (keysDown[keyMaps['Down']]) {
-		console.log('Down');
 		player.move(0,1);
 	}
 
 	if (keysDown[keyMaps['Up']]) {
-		console.log('Up');
 		player.move(0,-1);
 	}
 }
