@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="player.js"></script>
 	<script type="text/javascript" src="util.js"></script>
 	<script type="text/javascript" src="physics.js"></script>
+	<script type="text/javascript" src="screen.js"></script>
 	<script>
 		//setup game
 		var w = window.innerWidth - 20;
@@ -19,21 +20,18 @@
 		var canvas = document.getElementById('gameScreen');
         var options = SpriteOptions('images/sprite.png', 1000, 100, 10, context);
         var sprite = Sprite('images/sprite.png', 1000, 100, context, options);
+        var screen = Screen(w,h, context);
 		function animate() {
 			context.canvas.width = w;
 			context.canvas.height = h;
 			handleInputs();
 			//clear previous frame. Maybe do more efficently, idk. Should probably be handled by world/screen module
-			context.clearRect(0, 0, w,h);
-			context.fillStyle = 'blue';
-			context.rect(0,0,w,h);
-    		context.fill();
-    		//make a seperate drawing module maybe
-    		player.draw(context);
-            entity.draw(context);
-            entity.collide(player);
-            sprite.render();
-            window.requestAnimationFrame(animate);
+    		screen.render();
+            //player.draw(context);
+            //entity.draw(context);
+           // entity.collide(player);
+           // sprite.render();
+            //window.requestAnimationFrame(animate);
 			return;
 		}
         window.requestAnimationFrame(animate);

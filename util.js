@@ -54,6 +54,14 @@ function Sprite(src, height, width, context, options) {
     
 }
 
+function Color(r,g,b) {
+    //converts int values into hex
+    red = (r % 255).toString(16);
+    green = (g%255).toString(16);
+    blue = (b%255).toString(16);
+    return "#" + red + green + blue;   
+}
+
 function Example() {
 	var player = {};
 	player.x = 0;

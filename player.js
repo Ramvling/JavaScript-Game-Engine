@@ -3,14 +3,17 @@ function Entity(x,y) {
     entity.color = "#FF00FF";
 	entity.x = x;
 	entity.y = y;
-    entity.width = (w/100);
-    entity.height = (h/100);
+    entity.width = 50;
+    entity.height = 50;
+    entity.box = Box(x,y,50,50);
 	//change this soon
 	entity.speed = 1.5;
 	entity.move = function(dx,dy) {
 		entity.x += (dx * entity.speed);
 		entity.y += (dy * entity.speed);
 	}
+    
+  //  entity.box = Box(entity.x, entity.y, entity.width, entity.height);
 
 	entity.draw = function(ctxt) {
 		ctxt.fillStyle = entity.color;
